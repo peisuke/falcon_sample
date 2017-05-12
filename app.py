@@ -12,7 +12,7 @@ class Resource(object):
     image_binary = req.get_param('file').file.read()
     stream = io.BytesIO(bytearray(image_binary))
     picture = Image.open(stream)
-    resp.status = falcon.HTTP_201
+    resp.status = falcon.HTTP_200
     
     ret = {
       'width': picture.size[0],
