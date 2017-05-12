@@ -1,12 +1,18 @@
+import argparse
 import requests
 import os
 import json
 from PIL import Image 
 
-filepath = os.path.join('./', 'test.jpg')
-image = open(filepath, 'rb')
+parser = argparse.ArgumentParser(description='FALCON API Client')
+parser.add_argument('--data', '-d', type=str, required=True, help='Path to target image')
+parser.add_argument('--ip', '-i', default='127.0.0.1', help='ip address to server')
+parser.add_argument('--port', '-p', default='8000', help='port')
+args = parser.parse_args()
 
-url = "http://127.0.0.1:8000/images"
+image = open(args.data, 'rb')
+
+url = "http://%s:%s/images" % (args.ip, args.port)
 s = requests.session()
 r = s.post(url, files={'file': image})
 
