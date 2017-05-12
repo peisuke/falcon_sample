@@ -14,5 +14,5 @@ $ docker run -it -p 8000:8000 --rm falcon_sample
 Send image to the server, and output image size.
 
 ```sh
-$ python client.py
+$ python client.py -d ./test.jpg -i 127.0.0.1 -p 8000
 ```
